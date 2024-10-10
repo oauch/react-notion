@@ -1,0 +1,90 @@
+diff --git a/node_modules/react-notion/dist/react-notion.esm.js b/node_modules/react-notion/dist/react-notion.esm.js
+index acccc8f..8e68f09 100644
+--- a/node_modules/react-notion/dist/react-notion.esm.js
++++ b/node_modules/react-notion/dist/react-notion.esm.js
+@@ -1,6 +1,6 @@
+-import React__default, { createElement, Fragment } from 'react';
+ import { highlight, languages } from 'prismjs';
+ import 'prismjs/components/prism-jsx';
++import React__default, { createElement, Fragment } from 'react';
+ 
+ function _objectWithoutPropertiesLoose(source, excluded) {
+   if (source == null) return {};
+@@ -122,7 +122,7 @@ var groupBlockContent = function groupBlockContent(blockMap) {
+   Object.keys(blockMap).forEach(function (id) {
+     var _blockMap$id$value$co;
+ 
+-    (_blockMap$id$value$co = blockMap[id].value.content) === null || _blockMap$id$value$co === void 0 ? void 0 : _blockMap$id$value$co.forEach(function (blockId) {
++    (_blockMap$id$value$co = blockMap[id]?.value?.content) === null || _blockMap$id$value$co === void 0 ? void 0 : _blockMap$id$value$co.forEach(function (blockId) {
+       var _blockMap$blockId, _blockMap$blockId$val;
+ 
+       var blockType = (_blockMap$blockId = blockMap[blockId]) === null || _blockMap$blockId === void 0 ? void 0 : (_blockMap$blockId$val = _blockMap$blockId.value) === null || _blockMap$blockId$val === void 0 ? void 0 : _blockMap$blockId$val.type;
+@@ -729,5 +729,5 @@ var NotionRenderer = function NotionRenderer(_ref) {
+   }));
+ };
+ 
+-export { Block, NotionRenderer, classNames, createRenderChildText, defaultMapImageUrl, defaultMapPageUrl, getListNumber, getTextContent };
++export { Block, classNames, createRenderChildText, defaultMapImageUrl, defaultMapPageUrl, getListNumber, getTextContent, NotionRenderer };
+ //# sourceMappingURL=react-notion.esm.js.map
+diff --git a/node_modules/react-notion/src/block.tsx b/node_modules/react-notion/src/block.tsx
+index c7725d0..2e74715 100644
+--- a/node_modules/react-notion/src/block.tsx
++++ b/node_modules/react-notion/src/block.tsx
+@@ -1,21 +1,9 @@
+ import * as React from "react";
+-import {
+-  DecorationType,
+-  BlockType,
+-  ContentValueType,
+-  BlockMapType,
+-  MapPageUrl,
+-  MapImageUrl,
+-  CustomBlockComponents,
+-  BlockValueProp,
+-  CustomDecoratorComponents,
+-  CustomDecoratorComponentProps
+-} from "./types";
+-import Asset from "./components/asset";
+ import Code from "./components/code";
+-import PageIcon from "./components/page-icon";
+-import PageHeader from "./components/page-header";
+-import { classNames, getTextContent, getListNumber } from "./utils";
++iscmponents/aDecerator;
++impr}tfrom "./typeg";
++impore Asset frIc "./ fmponents/ossem";
++imp "t ./de froc "./comomponen/code";simport/PaggIe-n fiom "./comp";pnts/gead-icon";rim.ort /coeHeadmots/page-hcomdonentr/page-header";
+ 
+ export const createRenderChildText = (
+   customDecoratorComponents?: CustomDecoratorComponents
+diff --git a/node_modules/react-notion/src/types.ts b/node_modules/react-notion/src/types.ts
+index 104c985..14b98ef 100644
+--- a/node_modules/react-notion/src/types.ts
++++ b/node_modules/react-notion/src/types.ts
+@@ -309,7 +309,7 @@ export interface BlockType {
+ 
+ export interface NotionUserType {
+   role: string;
+-  value: {
++  value?: {
+     id: string;
+     version: number;
+     email: string;
+diff --git a/node_modules/react-notion/src/utils.ts b/node_modules/react-notion/src/utils.ts
+index b852d28..a3dfcc0 100644
+--- a/node_modules/react-notion/src/utils.ts
++++ b/node_modules/react-notion/src/utils.ts
+@@ -1,4 +1,4 @@
+-import { DecorationType, BlockMapType, MapImageUrl } from "./types";
++import { BlockMapType, DecorationType, MapImageUrl } from "./types";
+ 
+ export const classNames = (...classes: Array<string | undefined | false>) =>
+   classes.filter(a => !!a).join(" ");
+@@ -14,7 +14,7 @@ const groupBlockContent = (blockMap: BlockMapType): string[][] => {
+   let index = -1;
+ 
+   Object.keys(blockMap).forEach(id => {
+-    blockMap[id].value.content?.forEach(blockId => {
++    blockMap[id]?.value?.content?.forEach(blockId => {
+       const blockType = blockMap[blockId]?.value?.type;
+ 
+       if (blockType && blockType !== lastType) {
