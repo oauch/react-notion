@@ -1,4 +1,4 @@
-import { DecorationType, BlockMapType, MapImageUrl } from "./types";
+import { BlockMapType, DecorationType, MapImageUrl } from "./types";
 
 export const classNames = (...classes: Array<string | undefined | false>) =>
   classes.filter(a => !!a).join(" ");
@@ -14,7 +14,7 @@ const groupBlockContent = (blockMap: BlockMapType): string[][] => {
   let index = -1;
 
   Object.keys(blockMap).forEach(id => {
-    blockMap[id].value.content?.forEach(blockId => {
+    blockMap[id]?.value.content?.forEach(blockId => {
       const blockType = blockMap[blockId]?.value?.type;
 
       if (blockType && blockType !== lastType) {
