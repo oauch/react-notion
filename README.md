@@ -11,8 +11,6 @@ _This package doesn't handle the communication with the API. Check out [notion-a
 
 <sub>Created by <a href="https://twitter.com/timolins">Timo Lins</a> & <a href="https://twitter.com/linstobias">Tobias Lins</a> with the help of all <a href="https://github.com/splitbee/react-notion/graphs/contributors">contributors</a> ❤️</sub>
 
-
-
 ## Features
 
 ⚡️ **Fast** – Up to 10x faster than Notion\*
@@ -25,9 +23,7 @@ _This package doesn't handle the communication with the API. Check out [notion-a
 
 _\* First Meaningful Paint compared to a [hosted example](http://react-notion-example.now.sh/) on [Vercel](https://vercel.com)._
 
-
 **react-notion** is best suited as minimal renderer for blogs & content pages. If you're looking for a full-featured solution to render Notion-like pages, check out [react-notion-x](https://github.com/NotionX/react-notion-x).
-
 
 ## Install
 
@@ -134,7 +130,7 @@ This tends to be an issue for those using `react-notion` in a `next.js` project.
 To ensure the programming language is correctly highlighted in production builds, one should explicitly imported into the project.
 
 ```jsx
-import 'prismjs/components/prism-{language}';
+import "prismjs/components/prism-{language}";
 ```
 
 ## Credits
@@ -143,3 +139,44 @@ import 'prismjs/components/prism-{language}';
 - [Timo Lins](https://timo.sh) – Code, Documentation
 - [samwightt](https://github.com/samwightt) – Inspiration & API Typings
 - [All people that contributed 💕](https://github.com/splitbee/react-notion/graphs/contributors)
+
+<br />
+<br />
+
+## Fixed
+
+- content is undefined error fix
+
+### 1. add your project patches folder
+
+<br />
+
+### 2. install patch-package
+
+```
+yarn add patch-package
+```
+
+<br />
+
+### 3. remove node-modules
+
+```
+rm -rf node_modules
+```
+
+<br />
+
+### 4. reinstall
+
+```
+yarn
+```
+
+<br />
+
+### 5. restart project
+
+```
+yarn start
+```
